@@ -54,3 +54,11 @@ body, html {
     padding-right: 0 !important;
     padding-left: 0 !important;
 }
+
+.sidebar-nav ul {
+    padding-top: 30px !important;
+}
+.nav-item a {
+    font-size: 0.8rem;
+    font-weight: normal;
+}

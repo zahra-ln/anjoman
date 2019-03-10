@@ -1,5 +1,21 @@
 var app = angular.module('ToDoApp', []);
 
+app.controller('MainController', function ($scope) {
+    $scope.tabs = {
+        'taskTab': false,
+        'categoryTab': false
+    };
+    $scope.changeTab = function (tab) {
+        angular.forEach($scope.tabs ,function (key, value) {
+                $scope.tabs[key] = false;
+        });
+        angular.forEach($scope.tabs ,function (key, value) {
+           if (value === tab) {
+               $scope.tabs[tab] = true;
+           }
+        });
+    }
+});
 app.controller('ToDoController', function ($scope, $http) {
     $scope.title = '';
     $scope.tasks = [];
@@ -73,4 +89,7 @@ app.controller('ToDoController', function ($scope, $http) {
                 }
             );
     };
+});
+app.controller('CategoryController', function ($scope, $http) {
+
 });
