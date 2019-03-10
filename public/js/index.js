@@ -7,7 +7,7 @@ app.controller('MainController', function ($scope) {
     };
     $scope.changeTab = function (tab) {
         angular.forEach($scope.tabs ,function (key, value) {
-                $scope.tabs[key] = false;
+                $scope.tabs[value] = false;
         });
         angular.forEach($scope.tabs ,function (key, value) {
            if (value === tab) {

@@ -23,11 +23,11 @@
         <nav class="sidebar-nav">
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link" ng-click="changeTab('taskTab')">
+                    <a class="nav-link" ng-click="changeTab('taskTab')" href="#">
                         <i class="nav-icon icon-drop"></i> کارها</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" ng-click="changeTab('categoryTab')">
+                    <a class="nav-link" ng-click="changeTab('categoryTab')" href="#">
                         <i class="nav-icon icon-pencil"></i> دسته بندی ها</a>
                 </li>
             </ul>
@@ -40,7 +40,7 @@
         <div class="container-fluid">
             <div class="animated fadeIn">
                 <div class="row">
-                    <div class="container" ng-if="tabs['taskTab'] === true">
+                    <div class="container" ng-if="tabs['taskTab'] == true">
                         <div ng-controller="ToDoController">
                             <div class="row" id="main-row">
                                 <div class="col">
@@ -115,7 +115,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="container" ng-if="tabs['categoryTab'] === true">
+                    <div class="container" ng-if="tabs['categoryTab'] == true">
                         <div ng-controller="CategoryController">
 
                         </div>
