@@ -46,6 +46,9 @@ body, html {
 #main-row {
     margin-top: 100px;
 }
+#main-content {
+    padding-top: 25px;
+}
 .min-h-400{
     min-height: 400px;
 }
