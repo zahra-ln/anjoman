@@ -11,8 +11,6 @@
     <link rel="stylesheet" href="{{ URL::asset('css/fontawesome.min.css') }}">
 
     <title>ToDo List</title>
-
-
 </head>
 <body ng-app="ToDoApp" class="hold-transition sidebar-mini"
       ng-controller="MainController">
@@ -29,12 +27,23 @@
                     <div class="container-fluid">
                         <div class="animated fadeIn">
                             <div class="row">
-                                <div class="container" ng-if="tabs['taskTab'] == true">
-                                    @include('layouts/controller-todo')
+                                <div class="container" ng-if="tabs['patientTab'] == true">
+                                    @include('layouts/controller-patients')
                                 </div>
                                 <div class="container" ng-if="tabs['categoryTab'] == true">
                                     @include('layouts/controller-category')
                                 </div>
+                                <div class="container" ng-if="tabs['showTab'] == true">
+                                    @include('layouts/controller-show')
+                                </div>
+                                <div class="container" ng-if="tabs['supportTab'] == true">
+                                    @include('layouts/controller-support')
+                                </div>
+                                <div class="container" ng-if="tabs['showsupportTab'] == true">
+                                    @include('layouts/controller-showsupport')
+                                </div>
+
+
                             </div>
                         </div>
                     </div>

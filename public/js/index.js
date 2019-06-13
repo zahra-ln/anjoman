@@ -17,8 +17,12 @@ app.directive('ngConfirmClick', [
 
 app.controller('MainController', function ($scope) {
     $scope.tabs = {
-        'taskTab': false,
-        'categoryTab': false
+
+        'patientTab': false,
+        'categoryTab': false,
+        'showTab': false,
+        'supportTab': false,
+        'showsupportTab': false,
     };
     $scope.changeTab = function (tab) {
         angular.forEach($scope.tabs, function (key, value) {
@@ -31,73 +35,229 @@ app.controller('MainController', function ($scope) {
         });
     }
 });
-app.controller('ToDoController', function ($scope, $http) {
-    $scope.title = '';
-    $scope.tasks = [];
-    $scope.completedTasks = [];
-
-    $scope.getTasks = function () {
-        $http.get("http://localhost:8000/api/tasks")
+app.controller('IndexRecordController', function ($scope, $http) {
+    $scope.name = '';
+    $scope.id = '';
+    $scope.patients = [];
+    $scope.getData = function () {
+        $http.get("http://localhost:8000/api/patients/")
             .then(
                 function successCallback(response) {
-                    $scope.tasks = response.data;
+                    $scope.patients = response.data;
+
                 },
                 function errorCallback(response) {
-                    console.log("مشکلی در ارتباط با سرور پیش آمده است");
+                    console.log( response.data );
                 }
             );
     };
-    $scope.getTasks();
+    $scope.getData();
+});
 
-    $scope.getCompletedTasks = function () {
-        $http.get("http://localhost:8000/api/completed-tasks")
-            .then(
-                function successCallback(response) {
-                    $scope.completedTasks = response.data;
-                },
-                function errorCallback(response) {
-                    console.log("مشکلی در ارتباط با سرور پیش آمده است");
-                }
-            );
-    };
-    $scope.getCompletedTasks();
-
+app.controller('RecordController', function ($scope, $http) {
+    $scope.name = '';
+    $scope.fathers_name = '';
+    $scope.national_code = '';
+    $scope.doctor = '';
+    $scope.id = '';
+    $scope.sickness_type = '';
+    $scope.insurance_type = '';
+    $scope.insurance = '';
+    $scope.date_transplant = '';
+    $scope.transplant_hospital= '';
+    $scope.transplant_doctor = '';
+    $scope.drug = '';
+    $scope.home_adres = '';
+    $scope.work_adres = '';
+    $scope.home_phone = '';
+    $scope.work_phone = '';
+    $scope.cellphone = '';
+    $scope.required_phone = '';
+    $scope.account_number = '';
     $scope.submit = function () {
-        $http.post("http://localhost:8000/api/tasks", {
-            title: $scope.title
+    $http.post("http://localhost:8000/api/patiens", {
+        name: $scope.name,
+        fathers_name: $scope.fathers_name,
+        national_code: $scope.national_code,
+        doctor: $scope.doctor,
+        id: $scope.id,
+        sickness_type: $scope.sickness_type,
+        insurance_type: $scope.insurance_type,
+        insurance: $scope.insurance,
+        date_transplant: $scope.date_transplant,
+        transplant_hospital: $scope.transplant_hospital,
+        transplant_doctor: $scope.transplant_doctor,
+        drug: $scope.drug,
+        home_adres: $scope.home_adres,
+        work_adres: $scope.work_adres,
+        home_phone: $scope.home_phone,
+        work_phone: $scope.work_phone,
+        cellphone: $scope.cellphone,
+        required_phone: $scope.required_phone,
+        account_number: $scope.account_number
+    })
+        .then(
+            function successCallback(response) {
+                alert('اطلاعات با موفقیت ثبت شد');
+                $window.location.href = "https://www.google.com";
+            },
+            function errorCallback(response) {
+                console.log( response.data );
+            }
+        );
+};
+});
+
+app.controller('ShowRecordController', function ($scope, $http) {
+    $scope.name = '';
+    $scope.fathers_name = '';
+    $scope.national_code = '';
+    $scope.doctor = '';
+    $scope.id = '';
+    $scope.sickness_type = '';
+    $scope.insurance_type = '';
+    $scope.insurance = '';
+    $scope.date_transplant = '';
+    $scope.transplant_hospital= '';
+    $scope.transplant_doctor = '';
+    $scope.drug = '';
+    $scope.home_adres = '';
+    $scope.work_adres = '';
+    $scope.home_phone = '';
+    $scope.work_phone = '';
+    $scope.cellphone = '';
+    $scope.required_phone = '';
+    $scope.account_number = '';
+    $scope.getData = function () {
+        $http.get("http://localhost:8000/api/patients/" + $scope.id)
+            .then(
+                function successCallback(response) {
+                    $scope.name = response.data.name,
+                        $scope.fathers_name = response.data.fathers_name,
+                        $scope.national_code = response.data.national_code,
+                        $scope.doctor = response.data.doctor,
+                        $scope.id = response.data.id,
+                        $scope.sickness_type = response.data.sickness_type,
+                        $scope.insurance_type = response.data.insurance_type,
+                        $scope.insurance = response.data.insurance,
+                        $scope.date_transplant = response.data.date_transplant,
+                        $scope.transplant_hospital = response.data.transplant_hospital,
+                        $scope.transplant_doctor = response.data.transplant_doctor,
+                        $scope.drug = response.data.drug,
+                        $scope.home_adres = response.data.home_adres,
+                        $scope.work_adres = response.data.work_adres,
+                        $scope.home_phone = response.data.home_phone,
+                        $scope.work_phone = response.data.work_phone,
+                        $scope.cellphone = response.data.cellphone,
+                        $scope.required_phone = response.data.required_phone,
+                        $scope.account_numbe = response.data.account_numberr
+                },
+                function errorCallback(response) {
+                    console.log( response.data );
+                }
+            );
+    };
+    $scope.getData();
+});
+app.controller('ShowRecordController', function ($scope, $http) {
+    $scope.name = '';
+    $scope.fathers_name = '';
+    $scope.national_code = '';
+    $scope.doctor = '';
+    $scope.id = '';
+    $scope.sickness_type = '';
+    $scope.insurance_type = '';
+    $scope.insurance = '';
+    $scope.date_transplant = '';
+    $scope.transplant_hospital= '';
+    $scope.transplant_doctor = '';
+    $scope.drug = '';
+    $scope.home_adres = '';
+    $scope.work_adres = '';
+    $scope.home_phone = '';
+    $scope.work_phone = '';
+    $scope.cellphone = '';
+    $scope.required_phone = '';
+    $scope.account_number = '';
+    $scope.getData = function () {
+        $http.get("http://localhost:8000/api/patients/" + $scope.id)
+            .then(
+                function successCallback(response) {
+                    $scope.name = response.data.name,
+                        $scope.fathers_name = response.data.fathers_name,
+                        $scope.national_code = response.data.national_code,
+                        $scope.doctor = response.data.doctor,
+                        $scope.id = response.data.id,
+                        $scope.sickness_type = response.data.sickness_type,
+                        $scope.insurance_type = response.data.insurance_type,
+                        $scope.insurance = response.data.insurance,
+                        $scope.date_transplant = response.data.date_transplant,
+                        $scope.transplant_hospital = response.data.transplant_hospital,
+                        $scope.transplant_doctor = response.data.transplant_doctor,
+                        $scope.drug = response.data.drug,
+                        $scope.home_adres = response.data.home_adres,
+                        $scope.work_adres = response.data.work_adres,
+                        $scope.home_phone = response.data.home_phone,
+                        $scope.work_phone = response.data.work_phone,
+                        $scope.cellphone = response.data.cellphone,
+                        $scope.required_phone = response.data.required_phone,
+                        $scope.account_numbe = response.data.account_numberr
+                },
+                function errorCallback(response) {
+                    console.log( response.data );
+                }
+            );
+    };
+    $scope.getData();
+});
+
+app.controller('SupportController', function ($scope, $http) {
+    $scope.helper = '';
+    $scope.amount = '';
+    $scope.typeofhelp = '';
+    $scope.date = '';
+    $scope.patient_id = '';
+    $scope.res = '';
+    $scope.supports='';
+    $scope.submit = function () {
+        $http.post("http://localhost:8000/api/supports", {
+            helper: $scope.helper,
+            amount: $scope.amount,
+            typeofhelp: $scope.typeofhelp,
+            date: $scope.date,
+            patient_id: $scope.patient_id
         })
             .then(
                 function successCallback(response) {
-                    $scope.tasks.push(response.data);
-                    $scope.title = '';
+                    $scope.res = (response.data);
+                    console.log($scope.res)
+
+                },
+                function errorCallback(response) {
+                    console.log( response.data );
+                }
+            );
+    };
+    $scope.getshowsupport = function () {
+        $http.get("http://localhost:8000/api/supports")
+            .then(
+                function successCallback(response) {
+
+                    $scope.supports = response.data;
                 },
                 function errorCallback(response) {
                     console.log("مشکلی در ارتباط با سرور پیش آمده است");
                 }
             );
     };
-
-    $scope.done = function (id) {
-        $http.post("http://localhost:8000/api/done-task", {
-            id: id
-        })
-            .then(
-                function successCallback(response) {
-                    $scope.getTasks();
-                    $scope.getCompletedTasks();
-                },
-                function errorCallback(response) {
-                    console.log("مشکلی در ارتباط با سرور پیش آمده است");
-                }
-            );
-    };
-
+    $scope.getshowsupport()
     $scope.delete = function (id) {
-        $http.delete("http://localhost:8000/api/tasks/" + id)
+        $http.delete("http://localhost:8000/api/supports/" + id)
             .then(
                 function successCallback(response) {
-                    $scope.getTasks();
-                    $scope.getCompletedTasks();
+                    $scope.getshowsupport()
+
+
                 },
                 function errorCallback(response) {
                     console.log("مشکلی در ارتباط با سرور پیش آمده است");
@@ -105,6 +265,8 @@ app.controller('ToDoController', function ($scope, $http) {
             );
     };
 });
-app.controller('CategoryController', function ($scope, $http) {
 
-});
+
+
+
+

@@ -13,8 +13,17 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('tasks', 'TaskController@index');
-Route::post('tasks', 'TaskController@store');
-Route::get('completed-tasks', 'TaskController@completedTasks');
-Route::post('done-task', 'TaskController@doneTask');
-Route::delete('tasks/{id}', 'TaskController@destroy');
+Route::get('patients', 'RecordController@index');
+Route::get('patients/{id}', 'RecordController@show');
+Route::post('patiens', 'RecordController@store');
+
+Route::put('patients/{id}', 'RecordController@update');
+Route::delete('patients/{id}', 'RecordController@destroy');
+
+
+
+
+Route::get('supports', 'SupportController@index');
+Route::post('supports', 'SupportController@store');
+
+Route::delete('supports/{id}', 'SupportController@destroy');

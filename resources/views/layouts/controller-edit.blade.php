@@ -1,4 +1,4 @@
-<div ng-controller="RecordController">
+<div ng-controller="edirRecordController">
     <div class="row">
         <div class="col">
             <div class="card min-h-400">
