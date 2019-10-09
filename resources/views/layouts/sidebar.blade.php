@@ -30,20 +30,38 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" ng-click="changeTab('showTab')" href="#">
-                            <i class='far fa-eye' style='font-size:24px'></i>
-                            <p>نمایش بیماران</p>
+                            <i class='far fa-eye' style='font-size:20px'></i>
+                            <p>جستجو در بیماران</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" ng-click="changeTab('supportTab')" href="#">
-                            <i class='far fa-plus-square' style='font-size:24px'></i>
+                            <i class='far fa-plus-square' style='font-size:21px'></i>
                             <p>ثبت کمک ها</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" ng-click="changeTab('showsupportTab')" href="#">
-                            <i class='fas fa-heart' style='font-size:24px'></i>
+                            <i class="far fa-handshake" style='font-size:21px'></i>
                             <p>نمایش کمک ها</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" ng-click="changeTab('searchsupportTab')" href="#">
+                            <i class="fas fa-search" style='font-size:21px'></i>
+                            <p>جستجو در کمکها </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" ng-click="changeTab('lettersTab')" href="#">
+                            <i class="far fa-envelope" style='font-size:21px'></i>
+                            <p>ثبت نامه ها</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" ng-click="changeTab('showlettersTab')" href="#">
+                            <i class="fas fa-envelope-open" style='font-size:21px'></i>
+                            <p>نامه ها</p>
                         </a>
                     </li>
 

@@ -3,9 +3,9 @@
         <div class="col">
             <div class="card min-h-400 ">
                 <div class="card-header text-center"  style="background-color: #ededed !important;">
-                    ثبت کمک ها
+                    ویرایش کمک
                 </div>
-                <form ng-submit="submit()" method="post">
+                <form ng-submit="edit()" >
                     {{csrf_field()}}
                     <div  class="d-flex mt-4 mr-4">
                         <span  style="width:90px; display: inline-block;">نهاد حمایتی : </span>
@@ -22,19 +22,15 @@
                     <div class="d-flex mr-4">
                         <span style="width: 90px;display: inline-block;">مبلغ کمکی : </span>
                         <input class="form-control" type="number" ng-model="amount"
-                               placeholder="مبلغ را وارد کنید(به ریال)"  style="width: 300px;"
-                        >
+                               placeholder="مبلغ را وارد کنید"  style="width: 300px;">
                     </div>
                     <br>
-
                     <div class="d-flex mr-4">
                         <span style="width: 90px;display: inline-block;">تاریخ : </span>
                         <input class="form-control" type="text" ng-model="date"
                                placeholder="تاریخ را وارد کنید"  style="width: 300px;" required>
                     </div>
                     <br>
-
-
                     <div  class="d-flex mt-4 mr-4">
                         <span  style="width:90px; display: inline-block;">کد بیمار: </span>
                         <input class="form-control" type="text" ng-model="patient_id"
@@ -47,7 +43,7 @@
                     <br>
                     <div class="input-group-append">
                         <button style="display: block;margin: 0 auto;width: 120px;background: darkgreen;"class="btn btn-primary mb-2" type="submit"
-                                id="button-addon2">ثبت
+                                id="button-addon2">ویرایش
                         </button>
                     </div>
                 </form>

@@ -5,34 +5,21 @@
     <div class="row">
         <div class="col">
             <div class="card min-h-400">
-                <div class="card-header text-center">
-                    نمایش بیمار
+                <div class="card-header ">
+                    <div style="float: right; width:40%;height: 10%" ><img src="images/a.jpg" width=" 80" height="70"></div>
+<br>
+                    انجمن خیریه حمایت از بیماران کلیوی
+                    <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     شهرستان قاینات
+
                 </div>
-                <form ng-submit="showData()" style="width: 70%">
-                    <div class="input-group mb-3">
-                        <input  type="text" ng-model="id" class="form-control"
-                                placeholder="َجستجو بر اساس شماره پرونده"
-                                aria-label="َجستجو بر اساس شماره پرونده">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="submit"
-                                    id="button-addon2">جستجو
-                            </button>
-                        </div>
-                    </div>
-                </form>
-                <form ng-submit="search()">
-                    <div class="input-group mb-3" style="width: 70%">
-                        <input type="text" ng-model="name" class="form-control"
-                               placeholder="جستجو بر اساس نام"
-                               aria-label="جستجو بر اساس نام و نام خانوادگی">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="submit"
-                                    id="button-addon2">جستجو
-                            </button>
-                        </div>
-                    </div>
-                </form>
-                <div id="d1" class="card-body">
+                <div id="d1" class="card-body" ng-submit="show2Data()">
+                <div   style="float: right" >
+
+
+                </div>
+
                     <div   style="float: right;width: 300px" >
                         <div>نام بیمار  : @{{name}} </div><br>
                         <div>نام پدر : @{{fathers_name}}</div><br>
@@ -84,6 +71,16 @@
                         <div> بیمه مکمل : @{{Insurance_mokaml  }}</div><br>
                         <div> سابقه بیماری در خانواده : @{{  Family_his_illness}}</div><br>
                         <div>شماره حساب : @{{account_number}}</div><br>
+                    <div style="float: left">
+                        <a class="nav-link" ng-click="changeTab('editTab', patient.id)" href="#">
+                            <button class="btn btn-outline-danger btn-sm"
+                                    data-title="edit" data-toggle="modal"
+                                    title="ویرایش">
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
+                        </a>
+                    </div></div>
+
                 </div>
                 </div>
             </div>

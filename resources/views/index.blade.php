@@ -10,14 +10,14 @@
     <link rel="stylesheet" href="{{ URL::asset('css/persian-datepicker.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/fontawesome.min.css') }}">
 
-    <title>ToDo List</title>
+    <title>Anjoman</title>
 </head>
 <body ng-app="ToDoApp" class="hold-transition sidebar-mini"
       ng-controller="MainController">
 <div class="wrapper">
-    @include('layouts/navbar')
-    @include('layouts/sidebar')
-    <!-- Content Wrapper. Contains page content -->
+@include('layouts/navbar')
+@include('layouts/sidebar')
+<!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Main content -->
         <section class="content" id="main-content">
@@ -27,6 +27,7 @@
                     <div class="container-fluid">
                         <div class="animated fadeIn">
                             <div class="row">
+
                                 <div class="container" ng-if="tabs['patientTab'] == true">
                                     @include('layouts/controller-patients')
                                 </div>
@@ -36,11 +37,41 @@
                                 <div class="container" ng-if="tabs['showTab'] == true">
                                     @include('layouts/controller-show')
                                 </div>
+                                <div class="container" ng-if="tabs['show2Tab'] == true">
+                                    @include('layouts/controller-show2')
+                                </div>
+                                <div class="container" ng-if="tabs['printmshdTab'] == true">
+                                    @include('layouts/printmshd')
+                                </div>
+                                <div class="container" ng-if="tabs['editTab'] == true">
+                                    @include('layouts/controller-edit')
+                                </div>
                                 <div class="container" ng-if="tabs['supportTab'] == true">
                                     @include('layouts/controller-support')
                                 </div>
+                                <div class="container" ng-if="tabs['editsupportTab'] == true">
+                                    @include('layouts/controller-editsupport')
+                                </div>
                                 <div class="container" ng-if="tabs['showsupportTab'] == true">
                                     @include('layouts/controller-showsupport')
+                                </div>
+                                <div class="container" ng-if="tabs['searchsupportTab'] == true">
+                                    @include('layouts/controller-searchinsupport')
+                                </div>
+                                <div class="container" ng-if="tabs['lettersTab'] == true">
+                                    @include('layouts/controller-letters')
+                                </div>
+                                <div class="container" ng-if="tabs['showlettersTab'] == true">
+                                    @include('layouts/controller-showletters')
+                                </div>
+                                <div class="container" ng-if="tabs['showaletterTab'] == true">
+                                    @include('layouts/controller-showaletter')
+                                </div>
+                                <div class="container" ng-if="tabs['editletterTab'] == true">
+                                    @include('layouts/editletter')
+                                </div>
+                                <div class="container" ng-if="tabs['printletterTab'] == true">
+                                    @include('layouts/controller-printaletter')
                                 </div>
 
 
@@ -61,5 +92,6 @@
 <script src="{{ URL::asset('js/index.js') }}"></script>
 <script src="{{ URL::asset('js/persian-date.min.js') }}"></script>
 <script src="{{ URL::asset('js/persian-datepicker.min.js') }}"></script>
+
 </body>
 </html>

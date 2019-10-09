@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Patient;
 use App\Support;
 use Illuminate\Http\Request;
 
@@ -9,43 +10,45 @@ class SupportController extends Controller
 {
     public function index()
     {
-        $support = Support::where('completed', '!=', 1)->where('deleted', 0)->get();
-        return response()->json($support, 200);
-    }
-
-    public function create()
-    {
-
-    }
-
-    public function store(Request $request)
-    {
-        $supports = Support::create($request->all());
+        $supports = Support::all();
         return response()->json($supports, 200);
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
+    public function search(Request $request)
+    {
+        $supportInstance = new Support();
+        $query = $supportInstance->newQuery();
+        if($request->has('patient_id')){
+            $query =Support:: where('patient_id', '=', $request->get('patient_id') );
+        }
+        $supports = $query->get();
+        return response()->json($supports, 200);
+    }
+
     public function show($id)
     {
-        $supports = Support::where('id', $id)->first();
-        return response()->json($supports, 200);
+        $support = Support::find($id);
+        if(!$support){
+            return response()->json(['message'=>'Not found'],404);
+        }
+        return response()->json($support, 200);
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+/*public function search(){
+        $key = request('keyword');
+        $lessons = Lesson::search($key)->latest()->get();
+        return view('front.section.search', compact('lessons','key'));
+    }*/
+    public function store(Request $request)
     {
-        //
+        $support = new support();
+        $support->helper = $request->get('helper');
+        $support->typeofhelp = $request->get('typeofhelp');
+        $support->date = $request->get('date');
+        $support->amount = $request->get('amount');
+        $support->patient_id = $request->get('patient_id');
+        $support->save();
+        return response()->json($support, 200);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -55,7 +58,14 @@ class SupportController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $support = Support::find($id);
+        $support->helper =$request->helper;
+        $support->typeofhelp =$request->typeofhelp ;
+        $support->date=$request->date ;
+        $support->amount =$request->amount;
+        $support->patient_id=$request->patient_id;
+        $support -> save();
+        return response()->json(['message'=>'saved successfully'], 200);
     }
 
     /**
@@ -66,7 +76,8 @@ class SupportController extends Controller
      */
     public function destroy($id)
     {
-        $supports = Support::find($id)->delete();
+        $category = Support::find($id)->delete();
         return response()->json([], 200);
     }
+
 }

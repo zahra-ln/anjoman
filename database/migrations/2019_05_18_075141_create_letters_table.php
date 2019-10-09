@@ -15,11 +15,11 @@ class CreateLettersTable extends Migration
     {
         Schema::create('letters', function (Blueprint $table) {
             $table->Increments('id');
-            $table->string('text');
-            $table->string('title');
-            $table->integer('date');
-
-            $table->integer('patient_id') ->unsigned();
+            $table->date('date');
+            $table->string('attach');
+            $table->text('shomare');
+            $table->text('textarea');
+            $table->integer('patient_id')->nullable();
             $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
             $table->timestamps();
         });
