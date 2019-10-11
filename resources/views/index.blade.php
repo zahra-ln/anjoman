@@ -67,12 +67,6 @@
                                 <div class="container" ng-if="tabs['showaletterTab'] == true">
                                     @include('layouts/controller-showaletter')
                                 </div>
-                                <div class="container" ng-if="tabs['editletterTab'] == true">
-                                    @include('layouts/editletter')
-                                </div>
-                                <div class="container" ng-if="tabs['printletterTab'] == true">
-                                    @include('layouts/controller-printaletter')
-                                </div>
 
 
                             </div>

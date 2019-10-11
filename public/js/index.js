@@ -28,9 +28,7 @@ app.controller('MainController', function ($scope) {
         'showsupportTab': false,
         'lettersTab': false,
         'showlettersTab': false,
-        'showaletterTab': false,
-        'editletterTab': false,
-        'printletterTab': false,
+        'showaletterTab': false
 
     };
     $scope.changeTab = function (tab, id = null) {
@@ -521,24 +519,7 @@ app.controller('LettersController', function ($scope, $http, $sce) {
             );
     };
     $scope.getshowletters();
-    $scope.editletter = function () {
-        $http.put("http://localhost/anjoman/public/api/letters/" +$scope.id , {
-            id: $scope.id,
-            patient_id: $scope.patient_id,
-            textarea: $scope.textarea,
-            shomare: $scope.shomare,
-            attach: $scope.attach,
-            date: $scope.date
-        })
-            .then(
-                function successCallback(response) {
-                    alert('اطلاعات با موفقیت ویرایش شد');
-                },
-                function errorCallback(response) {
-                    console.log( response.data );
-                }
-            );
-    };
+
     $scope.delete = function (id) {
         $http.delete("http://localhost/anjoman/public/api/letters/" + id)
             .then(
